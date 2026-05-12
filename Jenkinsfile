@@ -1,9 +1,10 @@
 @Library("Shared") _
 pipeline{
-    
-    agent { label "dev"};
-    
+
+    agent { label "dev"}
+
     stages{
+
         stage("Code Clone"){
             steps{
                script{
@@ -11,6 +12,7 @@ pipeline{
                }
             }
         }
+
         stage("Trivy File System Scan"){
             steps{
                 script{
@@ -18,25 +20,27 @@ pipeline{
                 }
             }
         }
+
         stage("Build"){
             steps{
                 sh "docker build -t two-tier-flask-app ."
             }
-            
         }
+
         stage("Test"){
             steps{
                 echo "Developer / Tester tests likh ke dega..."
             }
-            
         }
+
         stage("Push to Docker Hub"){
             steps{
                 script{
                     docker_push("dockerHubCreds","two-tier-flask-app")
-                }  
+                }
             }
         }
+
         stage("Deploy"){
             steps{
                 sh "docker compose up -d --build flask-app"
@@ -44,7 +48,7 @@ pipeline{
         }
     }
 
-post{
+    post{
         success{
             script{
                 emailext from: 'mentor@trainwithshubham.com',
@@ -53,6 +57,7 @@ post{
                 subject: 'Build success for Demo CICD App'
             }
         }
+
         failure{
             script{
                 emailext from: 'mentor@trainwithshubham.com',
