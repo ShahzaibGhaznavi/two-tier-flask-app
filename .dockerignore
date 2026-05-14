@@ -1,0 +1,6 @@
+mysql-data/
+*.pem
+*.cnf
+__pycache__/
+*.pyc
+.git
