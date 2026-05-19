@@ -42,4 +42,26 @@ stage("Push to Docker Hub") {
         }
  
     }
+
+post {
+    success {
+        emailext(
+            to: 'shahzaibazeem558@gmail.com',
+            subject: "Build Successful",
+            body: "Pipeline passed successfully"
+        )
+    }
+
+    failure {
+        emailext(
+            to: 'shahzaibazeem558@gmail.com',
+            subject: "Build Failed",
+            body: "Check Jenkins logs"
+        )
+    }
+
+    always {
+        echo "Pipeline finished"
+    }
+}
 }
