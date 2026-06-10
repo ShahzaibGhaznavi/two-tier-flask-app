@@ -41,8 +41,8 @@ stage("Push to Docker Hub") {
             steps{
                 
                 sh '''
-                docker compose down || true
-                docker compose up -d --remove-orphans 
+                docker-compose down || true
+                docker-compose up -d --remove-orphans 
                 '''
             }
         }
