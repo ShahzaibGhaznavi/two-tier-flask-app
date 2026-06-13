@@ -37,18 +37,16 @@ stage("Push to Docker Hub") {
         }
     }
 }
-        stage("Deploy"){
-            steps{
-                
-                sh '''
-                docker compose down || true
-                docker compose up -d --remove-orphans 
-                '''
-            }
-        }
- 
+    stage("Deploy"){
+    steps{
+        sh '''
+        docker stop flask-app || true
+        docker rm flask-app || true
+        docker run -d -p 5000:5000 --name flask-app two-tier-flask-app
+        '''
     }
-
+}
+    }
 post {
     success {
         emailext(
