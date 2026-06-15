@@ -41,6 +41,7 @@ stage("Deploy"){
     steps{
         sh '''
 docker-compose down -v --remove-orphans || true
+docker rm -f mysql || true
 docker-compose up -d --build
         '''
     }
