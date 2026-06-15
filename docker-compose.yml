@@ -3,7 +3,7 @@ version: "3.8"
 services:
   mysql:
     image: mysql:5.7
-    container_name: mysql
+    
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
@@ -23,7 +23,7 @@ services:
 
   flask-app:
     image: shahzaibazeem/two-tier-flask-app:latest
-    container_name: flask-app
+    
     restart: always
     ports:
       - "5000:5000"
