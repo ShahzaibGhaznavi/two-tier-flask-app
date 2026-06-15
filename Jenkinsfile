@@ -1,70 +1,81 @@
-pipeline{
+pipeline {
     agent any
-           options {
-    timestamps()
-    disableConcurrentBuilds()
-}
-    
 
-        stage("Trivy File System Scan"){
-            steps{
+    options {
+        timestamps()
+        disableConcurrentBuilds()
+    }
+
+    stages {
+
+        stage("Trivy File System Scan") {
+            steps {
                 sh "trivy fs . -o results.json"
             }
         }
-        stage("Build"){
-            steps{
+
+        stage("Build") {
+            steps {
                 sh "docker build -t two-tier-flask-app ."
             }
         }
-        stage("Test"){
-            steps{
+
+        stage("Test") {
+            steps {
                 echo "Developer test kr ke dega .."
             }
         }
-stage("Push to Docker Hub") {
-    steps {
-        withCredentials([usernamePassword(credentialsId: 'docker-hub-token', usernameVariable: 'USER', passwordVariable: 'PASS')]) {
-            sh '''
-                echo "$PASS" | docker login -u "$USER" --password-stdin
-                docker tag two-tier-flask-app $USER/two-tier-flask-app:latest
-                docker push $USER/two-tier-flask-app:latest
-            '''
+
+        stage("Push to Docker Hub") {
+            steps {
+                withCredentials([usernamePassword(
+                    credentialsId: 'docker-hub-token',
+                    usernameVariable: 'USER',
+                    passwordVariable: 'PASS'
+                )]) {
+                    sh '''
+                        echo "$PASS" | docker login -u "$USER" --password-stdin
+                        docker tag two-tier-flask-app $USER/two-tier-flask-app:latest
+                        docker push $USER/two-tier-flask-app:latest
+                    '''
+                }
+            }
+        }
+
+        stage("Deploy") {
+            steps {
+                sh '''
+                    set -e
+
+                    echo "Stopping old containers..."
+                    docker compose down -v --remove-orphans || true
+
+                    echo "Starting new deployment..."
+                    docker compose up -d --build
+                '''
+            }
         }
     }
-}
-stage("Deploy"){
-    steps{
-        sh '''
-        set -e
 
-        echo "Stopping old containers..."
-        docker compose down -v --remove-orphans || true
+    post {
+        success {
+            emailext(
+                to: 'shahzaibazeem558@gmail.com',
+                subject: "Build Successful",
+                body: "Pipeline passed successfully"
+            )
+        }
 
-        echo "Starting new deployment..."
-        docker compose up -d --build
-        '''
-    }
-}
-    }
-post {
-    success {
-        emailext(
-            to: 'shahzaibazeem558@gmail.com',
-            subject: "Build Successful",
-            body: "Pipeline passed successfully"
-        )
-    }
+        failure {
+            emailext(
+                to: 'shahzaibazeem558@gmail.com',
+                subject: "Build Failed",
+                body: "Check Jenkins logs"
+            )
+        }
 
-    failure {
-        emailext(
-            to: 'shahzaibazeem558@gmail.com',
-            subject: "Build Failed",
-            body: "Check Jenkins logs"
-        )
+        always {
+            echo "Pipeline finished"
+        }
     }
-
-    always {
-        echo "Pipeline finished"
-    }
-}
 }
