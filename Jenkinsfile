@@ -40,8 +40,9 @@ stage("Push to Docker Hub") {
 stage("Deploy"){
     steps{
         sh '''
-        docker compose down -v --remove-orphans || true
-        docker compose up -d --build
+        docker rm -f flask-app mysql || true
+        /usr/bin/docker compose down -v --remove-orphans || true
+        /usr/bin/docker compose up -d --build
         '''
     }
 }
