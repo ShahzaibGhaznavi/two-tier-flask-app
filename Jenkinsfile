@@ -8,6 +8,19 @@ pipeline {
 
     stages {
 
+        stage('Clean Workspace') {
+            steps {
+                cleanWs()
+            }
+        }
+
+        stage('Checkout Code') {
+            steps {
+                git branch: 'main',
+                    url: 'https://github.com/ShahzaibGhaznavi/two-tier-flask-app.git'
+            }
+        }
+
         stage("Trivy File System Scan") {
             steps {
                 sh "trivy fs . -o results.json"
@@ -47,10 +60,7 @@ pipeline {
                 sh '''
                     set -e
 
-                    echo "Stopping old containers..."
                     docker compose down -v --remove-orphans || true
-
-                    echo "Starting new deployment..."
                     docker compose up -d --build
                 '''
             }
