@@ -1,9 +1,3 @@
-
-
-https://github.com/user-attachments/assets/e06f9389-0836-4d32-b4e6-2709d27b8bcb
-
-
-
 # Flask App with MySQL (Docker + Jenkins CI/CD)
 
 This is a simple **Flask + MySQL two-tier application** that was already developed and containerized using Docker Compose.
@@ -11,6 +5,27 @@ This is a simple **Flask + MySQL two-tier application** that was already develop
 I implemented **CI/CD automation using Jenkins** to automate the build, security scan, image push, and deployment process.
 
 ---
+
+## 🚀 Flask App Live Deployment with Jenkins CI/CD
+
+https://github.com/user-attachments/assets/e06f9389-0836-4d32-b4e6-2709d27b8bcb
+
+---
+
+## 📸 Screenshots
+
+### 🚀 Application Running
+
+![App Running](https://raw.githubusercontent.com/ShahzaibGhaznavi/two-tier-flask-app/master/App-running.png)
+
+### 🚀 Jenkins Stage View
+![Jenkins Pipeline](https://raw.githubusercontent.com/ShahzaibGhaznavi/two-tier-flask-app/master/jenkins-pipeline.png)
+
+### 🚀 Docker Container Running
+![Docker Container](https://raw.githubusercontent.com/ShahzaibGhaznavi/two-tier-flask-app/master/docker-container.png)
+
+
+
 
 ## 🚀 My Contribution
 
@@ -95,21 +110,6 @@ CREATE TABLE messages (
 Base project was already built using Docker Compose
 My work focused on CI/CD automation using Jenkins
 Fixed runtime deployment issues (port conflict, container mismatch)
-
----
-
-## 📸 Screenshots
-
-### 🚀 Application Running
-
-![App Running](https://raw.githubusercontent.com/ShahzaibGhaznavi/two-tier-flask-app/master/App-running.png)
-
-### 🚀 Jenkins Stage View
-![Jenkins Pipeline](https://raw.githubusercontent.com/ShahzaibGhaznavi/two-tier-flask-app/master/jenkins-pipeline.png)
-
-### 🚀 Docker Container Running
-![Docker Container](https://raw.githubusercontent.com/ShahzaibGhaznavi/two-tier-flask-app/master/docker-container.png)
-
 
 
 
