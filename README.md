@@ -88,8 +88,12 @@ My work focused on CI/CD automation using Jenkins
 Fixed runtime deployment issues (port conflict, container mismatch)
 
 ---
-##Screenshots
-![image alt](https://github.com/ShahzaibGhaznavi/two-tier-flask-app/blob/master/App-running.png?raw=true)
+
+## 📸 Screenshots
+
+### 🚀 Application Running
+
+![App Running](https://raw.githubusercontent.com/ShahzaibGhaznavi/two-tier-flask-app/main/App-running.png)
 
 ---
 
