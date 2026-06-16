@@ -54,21 +54,14 @@ pipeline {
             }
         }
 
-        stage("Deploy (FAST)") {
-            steps {
-                sh '''
-                    docker stop flask-app || true
-                    docker rm flask-app || true
-
-                    docker run -d -p 5000:5000 --name flask-app \
-                    -e MYSQL_HOST=mysql \
-                    -e MYSQL_USER=admin \
-                    -e MYSQL_PASSWORD=admin \
-                    -e MYSQL_DB=devops \
-                    two-tier-flask-app
-                '''
-            }
-        }
+      stage("Deploy (FAST)") {
+    steps {
+        sh '''
+            docker compose down
+            docker compose up -d --build
+        '''
+    }
+}
     }
 
     post {
