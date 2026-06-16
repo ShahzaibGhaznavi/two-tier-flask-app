@@ -74,11 +74,13 @@ Checkout Source Code
 ↓  
 Build Docker Image  
 ↓  
-Trivy Security Scan  
+Trivy Security Scan (FS / Code)  
+↓  
+Test Stage  
 ↓  
 Push Image to Docker Hub  
 ↓  
-Deploy using Docker Compose
+Deploy using Docker Compose  
 
 
 ---
