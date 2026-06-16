@@ -45,20 +45,18 @@ The original project already included:
 
 ## 🔄 CI/CD Pipeline Flow
 
-
-GitHub Push
-↓
-
-Jenkins Pipeline Trigger
-↓
-Checkout Source Code
-↓
-Build Docker Image
-↓
-Trivy Security Scan
-↓
-Push Image to Docker Hub
-↓
+GitHub Push  
+↓  
+Jenkins Pipeline Trigger  
+↓  
+Checkout Source Code  
+↓  
+Build Docker Image  
+↓  
+Trivy Security Scan  
+↓  
+Push Image to Docker Hub  
+↓  
 Deploy using Docker Compose
 
 
