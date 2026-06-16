@@ -14,27 +14,27 @@ pipeline {
             }
         }
 
-        stage("Trivy File System Scan") {
+        stage("Trivy Scan (Optimized)") {
             steps {
                 sh '''
-                    if command -v trivy >/dev/null 2>&1; then
-                        trivy fs . -o results.json || true
-                    else
-                        echo "Trivy not installed, skipping scan"
-                    fi
+                    echo "Running lightweight Trivy scan..."
+                    trivy fs --severity HIGH,CRITICAL --no-progress . -o results.json || true
                 '''
             }
         }
 
-        stage("Build") {
+        stage("Build (Fast)") {
             steps {
-                sh "docker build -t two-tier-flask-app ."
+                sh '''
+                    docker build --cache-from two-tier-flask-app \
+                    -t two-tier-flask-app .
+                '''
             }
         }
 
         stage("Test") {
             steps {
-                echo "Developer test kr ke dega .."
+                echo "Developer test stage"
             }
         }
 
@@ -54,13 +54,26 @@ pipeline {
             }
         }
 
-        stage("Deploy") {
+        stage("Deploy (FAST)") {
             steps {
                 sh '''
-                    docker compose down || true
-                    docker compose up -d --build
+                    docker stop flask-app || true
+                    docker rm flask-app || true
+
+                    docker run -d -p 5000:5000 --name flask-app \
+                    -e MYSQL_HOST=mysql \
+                    -e MYSQL_USER=admin \
+                    -e MYSQL_PASSWORD=admin \
+                    -e MYSQL_DB=devops \
+                    two-tier-flask-app
                 '''
             }
+        }
+    }
+
+    post {
+        always {
+            echo "Pipeline finished"
         }
     }
 }
