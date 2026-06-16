@@ -95,6 +95,5 @@ Fixed runtime deployment issues (port conflict, container mismatch)
 
 ![App Running](https://raw.githubusercontent.com/ShahzaibGhaznavi/two-tier-flask-app/master/App-running.png)
 
----
 
 
