@@ -85,4 +85,6 @@ Base project was already built using Docker Compose
 My work focused on CI/CD automation using Jenkins
 Fixed runtime deployment issues (port conflict, container mismatch)
 
+![image alt](https://github.com/ShahzaibGhaznavi/two-tier-flask-app/blob/master/App%20running.png?raw=true)
+
 
