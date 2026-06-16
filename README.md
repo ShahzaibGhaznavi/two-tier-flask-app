@@ -46,6 +46,7 @@ The original project already included:
 ## 🔄 CI/CD Pipeline Flow
 
 
+
 GitHub Push
 ↓
 Jenkins Pipeline Trigger
@@ -59,6 +60,7 @@ Trivy Security Scan
 Push Image to Docker Hub
 ↓
 Deploy using Docker Compose
+
 
 ---
 
