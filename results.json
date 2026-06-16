@@ -1,0 +1,88 @@
+
+Report Summary
+
+┌──────────────────┬──────┬─────────────────┬─────────┐
+│      Target      │ Type │ Vulnerabilities │ Secrets │
+├──────────────────┼──────┼─────────────────┼─────────┤
+│ requirements.txt │ pip  │       15        │    -    │
+└──────────────────┴──────┴─────────────────┴─────────┘
+Legend:
+- '-': Not scanned
+- '0': Clean (no security findings detected)
+
+
+For OSS Maintainers: VEX Notice
+--------------------------------
+If you're an OSS maintainer and Trivy has detected vulnerabilities in your project that you believe are not actually exploitable, consider issuing a VEX (Vulnerability Exploitability eXchange) statement.
+VEX allows you to communicate the actual status of vulnerabilities in your project, improving security transparency and reducing false positives for your users.
+Learn more and start using VEX: https://trivy.dev/docs/v0.71/guide/supply-chain/vex/repo#publishing-vex-documents
+
+To disable this notice, set the TRIVY_DISABLE_VEX_NOTICE environment variable.
+
+
+requirements.txt (pip)
+======================
+Total: 15 (UNKNOWN: 0, LOW: 2, MEDIUM: 10, HIGH: 3, CRITICAL: 0)
+
+┌──────────┬────────────────┬──────────┬────────┬───────────────────┬───────────────┬──────────────────────────────────────────────────────────────┐
+│ Library  │ Vulnerability  │ Severity │ Status │ Installed Version │ Fixed Version │                            Title                             │
+├──────────┼────────────────┼──────────┼────────┼───────────────────┼───────────────┼──────────────────────────────────────────────────────────────┤
+│ Flask    │ CVE-2023-30861 │ HIGH     │ fixed  │ 2.0.1             │ 2.3.2, 2.2.5  │ flask: Possible disclosure of permanent session cookie due   │
+│          │                │          │        │                   │               │ to missing Vary: Cookie...                                   │
+│          │                │          │        │                   │               │ https://avd.aquasec.com/nvd/cve-2023-30861                   │
+│          ├────────────────┼──────────┤        │                   ├───────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2026-27205 │ LOW      │        │                   │ 3.1.3         │ flask: Flask: Information disclosure via improper caching of │
+│          │                │          │        │                   │               │ session data                                                 │
+│          │                │          │        │                   │               │ https://avd.aquasec.com/nvd/cve-2026-27205                   │
+├──────────┼────────────────┼──────────┤        ├───────────────────┼───────────────┼──────────────────────────────────────────────────────────────┤
+│ Werkzeug │ CVE-2023-25577 │ HIGH     │        │ 2.2.2             │ 2.2.3         │ python-werkzeug: high resource usage when parsing multipart  │
+│          │                │          │        │                   │               │ form data with many fields...                                │
+│          │                │          │        │                   │               │ https://avd.aquasec.com/nvd/cve-2023-25577                   │
+│          ├────────────────┤          │        │                   ├───────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2024-34069 │          │        │                   │ 3.0.3         │ python-werkzeug: user may execute code on a developer's      │
+│          │                │          │        │                   │               │ machine                                                      │
+│          │                │          │        │                   │               │ https://avd.aquasec.com/nvd/cve-2024-34069                   │
+│          ├────────────────┼──────────┤        │                   ├───────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2023-46136 │ MEDIUM   │        │                   │ 3.0.1, 2.3.8  │ python-werkzeug: high resource consumption leading to denial │
+│          │                │          │        │                   │               │ of service                                                   │
+│          │                │          │        │                   │               │ https://avd.aquasec.com/nvd/cve-2023-46136                   │
+│          ├────────────────┤          │        │                   ├───────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2024-49766 │          │        │                   │ 3.0.6         │ werkzeug: python-werkzeug: Werkzeug safe_join not safe on    │
+│          │                │          │        │                   │               │ Windows                                                      │
+│          │                │          │        │                   │               │ https://avd.aquasec.com/nvd/cve-2024-49766                   │
+│          ├────────────────┤          │        │                   │               ├──────────────────────────────────────────────────────────────┤
+│          │ CVE-2024-49767 │          │        │                   │               │ werkzeug: python-werkzeug: Werkzeug possible resource        │
+│          │                │          │        │                   │               │ exhaustion when parsing file data in forms...                │
+│          │                │          │        │                   │               │ https://avd.aquasec.com/nvd/cve-2024-49767                   │
+│          ├────────────────┤          │        │                   ├───────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2025-66221 │          │        │                   │ 3.1.4         │ Werkzeug: Werkzeug: Denial of service via Windows device     │
+│          │                │          │        │                   │               │ names in path segments...                                    │
+│          │                │          │        │                   │               │ https://avd.aquasec.com/nvd/cve-2025-66221                   │
+│          ├────────────────┤          │        │                   ├───────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2026-21860 │          │        │                   │ 3.1.5         │ Werkzeug safe_join() allows Windows special device names     │
+│          │                │          │        │                   │               │ with compound extensions                                     │
+│          │                │          │        │                   │               │ https://avd.aquasec.com/nvd/cve-2026-21860                   │
+│          ├────────────────┤          │        │                   ├───────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2026-27199 │          │        │                   │ 3.1.6         │ Werkzeug safe_join() allows Windows special device names     │
+│          │                │          │        │                   │               │ https://avd.aquasec.com/nvd/cve-2026-27199                   │
+│          ├────────────────┼──────────┤        │                   ├───────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2023-23934 │ LOW      │        │                   │ 2.2.3         │ python-werkzeug: cookie prefixed with = can shadow           │
+│          │                │          │        │                   │               │ unprefixed cookie                                            │
+│          │                │          │        │                   │               │ https://avd.aquasec.com/nvd/cve-2023-23934                   │
+├──────────┼────────────────┼──────────┤        ├───────────────────┼───────────────┼──────────────────────────────────────────────────────────────┤
+│ requests │ CVE-2023-32681 │ MEDIUM   │        │ 2.26.0            │ 2.31.0        │ python-requests: Unintended leak of Proxy-Authorization      │
+│          │                │          │        │                   │               │ header                                                       │
+│          │                │          │        │                   │               │ https://avd.aquasec.com/nvd/cve-2023-32681                   │
+│          ├────────────────┤          │        │                   ├───────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2024-35195 │          │        │                   │ 2.32.0        │ requests: subsequent requests to the same host ignore cert   │
+│          │                │          │        │                   │               │ verification                                                 │
+│          │                │          │        │                   │               │ https://avd.aquasec.com/nvd/cve-2024-35195                   │
+│          ├────────────────┤          │        │                   ├───────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2024-47081 │          │        │                   │ 2.32.4        │ requests: Requests vulnerable to .netrc credentials leak via │
+│          │                │          │        │                   │               │ malicious URLs                                               │
+│          │                │          │        │                   │               │ https://avd.aquasec.com/nvd/cve-2024-47081                   │
+│          ├────────────────┤          │        │                   ├───────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2026-25645 │          │        │                   │ 2.33.0        │ requests: Requests: Security bypass due to predictable       │
+│          │                │          │        │                   │               │ temporary file creation                                      │
+│          │                │          │        │                   │               │ https://avd.aquasec.com/nvd/cve-2026-25645                   │
+└──────────┴────────────────┴──────────┴────────┴───────────────────┴───────────────┴──────────────────────────────────────────────────────────────┘
