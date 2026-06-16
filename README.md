@@ -1,9 +1,3 @@
-## 📸 Screenshots
-
-### 🚀 Application Running
-
-![App Running](https://raw.githubusercontent.com/ShahzaibGhaznavi/two-tier-flask-app/master/App-running.png)
-
 # Flask App with MySQL (Docker + Jenkins CI/CD)
 
 This is a simple **Flask + MySQL two-tier application** that was already developed and containerized using Docker Compose.
@@ -73,7 +67,7 @@ Deploy using Docker Compose
 docker compose up -d --build
 
 Stop:
-
+```
 docker compose down
 🌐 Access Application
 
@@ -94,6 +88,12 @@ My work focused on CI/CD automation using Jenkins
 Fixed runtime deployment issues (port conflict, container mismatch)
 
 ---
+
+## 📸 Screenshots
+
+### 🚀 Application Running
+
+![App Running](https://raw.githubusercontent.com/ShahzaibGhaznavi/two-tier-flask-app/master/App-running.png)
 
 
 
