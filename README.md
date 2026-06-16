@@ -70,11 +70,13 @@ docker compose up -d --build
 Stop:
 ```
 docker compose down
+```
 🌐 Access Application
 
 Frontend / Backend:
 http://46.51.204.236:5000/
 
+```
 🗄️ Database Setup
 CREATE TABLE messages (
     id INT AUTO_INCREMENT PRIMARY KEY,
