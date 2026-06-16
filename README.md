@@ -99,6 +99,9 @@ Fixed runtime deployment issues (port conflict, container mismatch)
 ### 🚀 Jenkins Stage View
 ![Jenkins Pipeline](https://raw.githubusercontent.com/ShahzaibGhaznavi/two-tier-flask-app/master/jenkins-pipeline.png)
 
+### 🚀 Docker Container Running
+![Docker Container](https://raw.githubusercontent.com/ShahzaibGhaznavi/two-tier-flask-app/master/docker-container.png)
+
 
 
 
