@@ -8,16 +8,9 @@ pipeline {
 
     stages {
 
-        stage('Clean Workspace') {
+        stage('Code') {
             steps {
-                cleanWs()
-            }
-        }
-
-        stage('Checkout Code') {
-            steps {
-                git branch: 'master',
-                    url: 'https://github.com/ShahzaibGhaznavi/two-tier-flask-app.git'
+                git url: 'https://github.com/ShahzaibGhaznavi/two-tier-flask-app.git', branch: 'master'
             }
         }
 
@@ -64,34 +57,10 @@ pipeline {
         stage("Deploy") {
             steps {
                 sh '''
-                   
-                   docker stop flask-app || true
-docker rm flask-app || true
-docker run -d -p 5000:5000 --name flask-app two-tier-flask-app
+                    docker compose down || true
+                    docker compose up -d --build
                 '''
             }
-        }
-    }
-
-    post {
-        success {
-            emailext(
-                to: 'shahzaibazeem558@gmail.com',
-                subject: "Build Successful",
-                body: "Pipeline passed successfully"
-            )
-        }
-
-        failure {
-            emailext(
-                to: 'shahzaibazeem558@gmail.com',
-                subject: "Build Failed",
-                body: "Check Jenkins logs"
-            )
-        }
-
-        always {
-            echo "Pipeline finished"
         }
     }
 }
